@@ -16,7 +16,6 @@
       --page-max: 1400px;
     }
 
-    /* בסיס רספונסיבי */
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
@@ -141,7 +140,7 @@
     .flip-card img { width: 100%; height: 100%; object-fit: contain; }
     .flip-card .back { transform: rotateY(180deg); }
 
-    /* קרוסלת מסיבות */
+    /* Parties */
     #parties {
       padding: clamp(3rem, 6vw, 5rem) 0 clamp(2.6rem, 5vw, 4rem);
       text-align: center;
@@ -168,7 +167,7 @@
       width: 100%; height: 100%; object-fit: cover; user-select: none;
     }
 
-    /* מודאל */
+    /* Modal */
     .modal {
       position: fixed;
       inset: 0;
@@ -181,7 +180,6 @@
     }
     .modal.active { display: flex; }
 
-    /* גלילה בתוך המודעה */
     .modal-content {
       background: #fff;
       border-radius: 16px;
@@ -190,8 +188,6 @@
       padding: clamp(1rem, 3vw, 1.6rem);
       text-align: center;
       box-shadow: 0 8px 30px rgba(0,0,0,0.25);
-
-      /* הוספתי: מאפשר גלילה פנימית נעימה */
       max-height: 90vh;
       overflow: auto;
       -webkit-overflow-scrolling: touch;
@@ -205,7 +201,7 @@
       object-fit: cover;
     }
     .modal-content h3 { margin-bottom: 0.5rem; font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
-    .modal-content p { color: #555; margin-bottom: 1.2rem; line-height: 1.6; font-size: clamp(1rem, 1.8vw, 1.1rem); }
+    .modal-content p  { color: #555; margin-bottom: 1.2rem; line-height: 1.6; font-size: clamp(1rem, 1.8vw, 1.1rem); white-space: pre-line; }
 
     .modal-content .btn {
       display: inline-block;
@@ -217,8 +213,17 @@
       font-size: clamp(1rem, 1.8vw, 1.1rem);
       box-shadow: 0 4px 14px rgba(108, 140, 255, 0.4);
       transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+      cursor: pointer;
     }
     .modal-content .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(108, 140, 255, 0.6); }
+
+    /* ביטול הנפשות ספציפית לכפתור הקנייה */
+    #getTicketsBtn,
+    #getTicketsBtn:hover {
+      transition: none !important;
+      transform: none !important;
+      box-shadow: none !important;
+    }
 
     .close-modal {
       position: absolute;
@@ -229,20 +234,10 @@
       user-select: none;
     }
 
-    /* --- אזורים כלליים --- */
-    #about, #buy, #contact {
-      text-align: center;
-      position: relative;
-    }
+    /* About */
+    #about, #contact { text-align: center; position: relative; }
+    #about .container, #contact .container { width: min(800px, 92vw); margin: 0 auto; position: relative; z-index: 1; }
 
-    #about .container, #buy .container, #contact .container {
-      width: min(800px, 92vw);
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* --- רקע לאודות --- */
     #about {
       padding: clamp(4rem, 8vw, 7rem) 0 clamp(4rem, 8vw, 8rem);
       color: #fff;
@@ -259,21 +254,7 @@
     #about h2 { font-size: clamp(1.8rem, 3.4vw, 2.5rem); margin-bottom: clamp(1rem, 2.2vw, 1.5rem); }
     #about p  { font-size: clamp(1rem, 2vw, 1.25rem); line-height: 1.85; }
 
-    /* קנה כרטיס */
-    #buy {
-      background: #ffffff;
-      padding: clamp(3rem, 6vw, 5rem) 0;
-    }
-    #buy h2 { font-size: clamp(1.6rem, 3.2vw, 2.2rem); }
-    #buy p  { font-size: clamp(1rem, 2vw, 1.15rem); }
-    #buy img {
-      width: clamp(200px, 30vw, 320px);
-      margin-top: 1.1rem;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    }
-
-    /* צור קשר + פוטר */
+    /* Contact + Footer */
     #contact { padding: clamp(3rem, 6vw, 5rem) 0; }
     #contact h2 { font-size: clamp(1.6rem, 3.2vw, 2.2rem); }
     #contact .btn {
@@ -294,21 +275,15 @@
       font-size: clamp(0.85rem, 1.6vw, 0.95rem);
     }
 
-    /* --- רספונסיביות מתקדמת --- */
     @media (max-width: 1024px) {
-      .split-hero .container {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
+      .split-hero .container { grid-template-columns: 1fr; text-align: center; }
       .hero-content { justify-self: center; }
     }
-
     @media (min-width: 1600px) {
       :root { --page-max: 1600px; }
       .split-hero { padding: 7rem 0 7rem; }
       .hero-content p { max-width: 60ch; }
     }
-
     @media (min-width: 1920px) {
       :root { --page-max: 1800px; }
       body { font-size: clamp(16px, 1vw, 20px); }
@@ -323,7 +298,6 @@
     <nav>
       <ul>
         <li><a href="#about">אודות</a></li>
-        <li><a href="#buy">קנה כרטיס</a></li>
         <li><a href="#contact">צור קשר</a></li>
         <li><a href="#contact" class="cta">התחילו עכשיו</a></li>
       </ul>
@@ -347,37 +321,45 @@
     </div>
   </section>
 
-  <!-- קרוסלת מסיבות -->
+  <!-- Parties -->
   <section id="parties">
     <div class="container">
       <h2>מסיבות קרובות</h2>
       <div class="swiper party-swiper">
         <div class="swiper-wrapper">
-          <div class="swiper-slide" data-title="November 1st 2025, | 18:30" data-desc="🐆סוף סוף סיירת גולני🐆               
- 🐆ללא ספק אחרי מסלול חריג צריך לסיים בצורה חריגה
+          <div class="swiper-slide" data-title="November 1st 2025, | 18:30" data-desc="🐆סוף סוף סיירת גולני🐆
+🐆ללא ספק אחרי מסלול חריג צריך לסיים בצורה חריגה
 אחרי הרבה לילות לבנים שמגיעים לסופם אנחנו מזמינים אותכם לחגוג איתנו כמו נמרים
 כמות מטורפת של אלכוהול שיהיה שמח שלא תשאיר אתכם צמאים לרגע 🍻🍺🍾
 לוקיישן במרכז באוויר הפתוח🌴
 עם ליין אפ חריג עם עוד אומן מטורף שתדעו בהמשך😵‍💫🫨
 שסיירת גולני מסיימים מסלול זה בצורה הכי חריגה שיש אז תבואו עם הרבה מצב רוח פה זה לא צנחנים 🔰
-תגיעו לחגוג עם הנמרים החדשים🐆🐆
-" data-link="#"><img loading="lazy" src="smart_ticket_home_files/מסיבה גולני .jpeg" alt=""></div>
+תגיעו לחגוג עם הנמרים החדשים🐆🐆" data-link="https://www.bitpay.co.il/app/share-info?i=220300980564_19l2TMTi">
+            <img loading="lazy" src="smart_ticket_home_files/מסיבה גולני .jpeg" alt="">
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- מודאל למסיבה -->
+  <!-- Modal -->
   <div class="modal" id="partyModal" aria-hidden="true" role="dialog">
     <div class="close-modal" id="closeModal" aria-label="סגור">&times;</div>
     <div class="modal-content" id="modalContent">
       <img src="" alt="">
       <h3></h3>
       <p></p>
-      <a href="https://www.bitpay.co.il/app/share-info?i=220300980564_19l2TMTi" id="getTicketsBtn" class="btn">קנה כרטיס עם אפשרות ביטול</a>
+      <!-- כפתור ללא כל JS שמונע ניווט -->
+      <a href="https://www.bitpay.co.il/app/share-info?i=220300980564_19l2TMTi"
+         id="getTicketsBtn"
+         class="btn"
+         target="_blank" rel="noopener">
+        קנה כרטיס עם אפשרות ביטול
+      </a>
     </div>
   </div>
 
-  <!-- אודות -->
+  <!-- About -->
   <section id="about">
     <div class="container">
       <h2>הסיפור שלנו</h2>
@@ -391,7 +373,7 @@
     </div>
   </section>
 
-  <!-- צור קשר -->
+  <!-- Contact -->
   <section id="contact">
     <div class="container">
       <h2>צרו קשר</h2>
@@ -403,7 +385,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
-    // גלילה חלקה לעוגנים
+    // גלילה חלקה לעוגנים פנימיים בלבד
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click',e=>{
         const href=a.getAttribute('href');
@@ -411,11 +393,12 @@
           e.preventDefault();
           const el=document.querySelector(href);
           el && el.scrollIntoView({behavior:'smooth', block:'start'});
+          history.replaceState(null,'',href);
         }
       });
     });
 
-    // Swiper - רספונסיבי
+    // Swiper
     const swiper=new Swiper('.party-swiper',{
       loop:false,
       speed:650,
@@ -434,13 +417,12 @@
       }
     });
 
-    // בסוף -> חזרה רכה להתחלה
     swiper.on('reachEnd',()=>{
       const d=swiper.params.autoplay.delay||2500;
       setTimeout(()=>swiper.slideTo(0,swiper.params.speed,true),d-300);
     });
 
-    // מודאל
+    // Modal open/close
     const slides=document.querySelectorAll('.swiper-slide');
     const modal=document.getElementById('partyModal');
     const modalImg=modal.querySelector('img');
@@ -449,15 +431,33 @@
     const closeModal=document.getElementById('closeModal');
     const getTicketsBtn=document.getElementById('getTicketsBtn');
 
+    const DEFAULT_TICKETS_URL = getTicketsBtn.getAttribute('href');
+
     slides.forEach(slide=>{
       slide.addEventListener('click',()=>{
         const img = slide.querySelector('img');
+        const link = (slide.dataset.link || '').trim();
+
         modalImg.src = img ? img.src : '';
         modalTitle.textContent = slide.dataset.title || '';
-        modalDesc.textContent = slide.dataset.desc || '';
+        modalDesc.textContent  = (slide.dataset.desc || '').trim();
+
+        // עדכון קישור הכפתור (אם יש data-link, אחרת ברירת מחדל)
+        const finalHref = (link && link !== '#') ? link : DEFAULT_TICKETS_URL;
+        getTicketsBtn.setAttribute('href', finalHref);
+
+        // פתיחה בחלון חדש עבור קישור חיצוני
+        if (/^https?:\/\//i.test(finalHref)) {
+          getTicketsBtn.setAttribute('target','_blank');
+          getTicketsBtn.setAttribute('rel','noopener');
+        } else {
+          getTicketsBtn.removeAttribute('target');
+          getTicketsBtn.removeAttribute('rel');
+        }
+
         modal.classList.add('active');
         modal.setAttribute('aria-hidden','false');
-        document.body.style.overflow='hidden'; // נועל את רקע העמוד
+        document.body.style.overflow='hidden';
       }, {passive:true});
     });
 
@@ -467,13 +467,6 @@
       document.body.style.overflow='';
     }
 
-    getTicketsBtn.addEventListener('click',e=>{
-      e.preventDefault();
-      hideModal();
-      document.querySelector('#buy')?.scrollIntoView({behavior:'smooth',block:'start'});
-      history.replaceState(null,'','#buy');
-    });
-
     closeModal.addEventListener('click', hideModal);
     modal.addEventListener('click',e=>{ if(e.target===modal){ hideModal(); } });
 
@@ -482,8 +475,7 @@
       if(e.key === 'Escape' && modal.classList.contains('active')) hideModal();
     }, {passive:true});
 
-    // תיקון hover בטאצ'
-    window.addEventListener('touchstart',()=>{}, {passive:true});
+    // אין מאזין click על getTicketsBtn כלל – הניווט מתבצע מיד בלחיצה אחת.
   </script>
 </body>
 </html>
